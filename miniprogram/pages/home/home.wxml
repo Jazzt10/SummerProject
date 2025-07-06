@@ -1,0 +1,51 @@
+<scroll-view scroll-y="true" class="page-content">
+  <view class="search-bar">
+    <icon type="search" class="search-icon" />
+    <input class="search-input" placeholder="搜索目的地" bindconfirm="onSearch" />
+  </view>
+
+  <view class="main-content">
+    <view class="section-title">
+      <text>推荐行程</text>
+      <navigator url="/pages/recommend/recommend" class="see-all">查看全部</navigator>
+    </view>
+
+    <scroll-view scroll-x="true" class="trip-cards" enable-flex="true" show-scrollbar="false">
+      <block wx:for="{{recommendTrips}}" wx:key="id">
+        <view class="trip-card" bindtap="onTripTap" data-id="{{item.id}}">
+          <view class="trip-image" style="background-image: url({{item.image}})">
+            <view class="trip-overlay">
+              <view class="trip-title">{{item.title}}</view>
+              <view class="trip-meta">
+                <text>{{item.days}}天</text>
+                <text>{{item.type}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  
+  <view class="tab-bar">
+    <navigator url="/pages/home/home" class="tab-item {{activeTab === 'home' ? 'active' : ''}}">
+      <icon type="home" size="24" />
+      <text>首页</text>
+    </navigator>
+
+    <navigator url="/pages/plan/plan" class="tab-item {{activeTab === 'plan' ? 'active' : ''}}">
+      <icon type="search" size="24" />
+      <text>规划</text>
+    </navigator>
+
+    <navigator url="/pages/shequ/shequ" class="tab-item {{activeTab === 'shequ' ? 'active' : ''}}">
+      <icon type="share" size="24" />
+      <text>社区</text>
+    </navigator>
+
+    <navigator url="/pages/profile/profile" class="tab-item {{activeTab === 'profile' ? 'active' : ''}}">
+      <icon type="user" size="24" />
+      <text>我的</text>
+    </navigator>
+  </view>
+</scroll-view>

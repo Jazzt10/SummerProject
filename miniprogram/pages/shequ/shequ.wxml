@@ -1,0 +1,42 @@
+<scroll-view scroll-y="true" class="page-content">
+  <view class="community-title">社区</view>
+
+  <block wx:for="{{posts}}" wx:key="id">
+    <view class="post-card">
+      <image class="avatar" src="{{item.avatar || '/default-avatar.png'}}" />
+
+      <view class="post-content">
+        <view class="username">{{item.title}}</view>
+        <view class="text">{{item.content}}</view>
+
+        <view class="images">
+          <block wx:for="{{item.images}}" wx:key="index">
+            <image src="{{item}}" mode="aspectFill" />
+          </block>
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+<view class="tab-bar">
+  <navigator url="/pages/home/home" class="tab-item {{activeTab === 'home' ? 'active' : ''}}">
+    <icon type="home" size="24" />
+    <text>首页</text>
+  </navigator>
+
+  <navigator url="/pages/plan/plan" class="tab-item {{activeTab === 'plan' ? 'active' : ''}}">
+    <icon type="search" size="24" />
+    <text>规划</text>
+  </navigator>
+
+  <navigator url="/pages/shequ/shequ" class="tab-item {{activeTab === 'shequ' ? 'active' : ''}}">
+    <icon type="share" size="24" />
+    <text>社区</text>
+  </navigator>
+
+  <navigator url="/pages/profile/profile" class="tab-item {{activeTab === 'profile' ? 'active' : ''}}">
+    <icon type="user" size="24" />
+    <text>我的</text>
+  </navigator>
+</view>
